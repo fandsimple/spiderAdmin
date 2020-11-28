@@ -31,8 +31,12 @@ urlpatterns = [
     # 设置日志
     url('saveitemadd', views.saveItemAdd, name='saveitemadd'),
 
-    # 设置日志
-    url('hello', views.hello, name='hello'),
+    # 获取redis中的任务
+    url('getredistask', views.getRedisTask, name='getredistask'),
+
+
+
+
 
 
 

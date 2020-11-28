@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from spiderTask.models import Task, Proxy, Pic, Log, LastestData, CveItemInfo, Translation, CveItemInfoAdd
-from daterange_filter.filter import DateRangeFilter
+# from daterange_filter.filter import DateRangeFilter
 
 admin.site.site_header = 'Stronger Spider'
 admin.site.site_title = 'Stronger Spider'
@@ -15,18 +15,18 @@ class BaseAdmin(admin.ModelAdmin):
     empty_value_display = ' 空白 '  # 空白字段显示格式
 
 
-# # Task
-# @admin.register(Task)
-# class TaskAdmin(BaseAdmin):
-#     ordering = ('taskId',)
-#     list_display = (
-#         'taskId', 'taskName', 'taskType', 'taskStatus', 'parentTaskId', 'taskIP', 'taskRet', 'priority',
-#         'createTime', 'startTime', 'finishTime')  # 显示字段
-#     search_fields = ('taskId',)  # 搜索条件配置
-#     list_filter = ('taskType',)  # 过滤字段配置
-#     # list_editable = ['taskName']
-#
-#     # list_display_links = ('id', 'caption') # 配置点击进入详情字段
+# Task
+@admin.register(Task)
+class TaskAdmin(BaseAdmin):
+    ordering = ('taskId',)
+    list_display = (
+        'taskId', 'taskName', 'taskType', 'taskStatus', 'parentTaskId', 'taskIP', 'taskRet', 'priority',
+        'createTime', 'startTime', 'finishTime')  # 显示字段
+    search_fields = ('taskId',)  # 搜索条件配置
+    list_filter = ('taskType',)  # 过滤字段配置
+    # list_editable = ['taskName']
+
+    # list_display_links = ('id', 'caption') # 配置点击进入详情字段
 
 
 # # Proxy

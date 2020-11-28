@@ -4,17 +4,16 @@ import time
 import traceback
 import datetime
 
+from django.core.cache import cache
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.db import transaction
 from django.db.models import Q
-
 from spiderAdmin.settings import GET_TASK_RULE
 from spiderTask.common import render_json
 from spiderTask.constant import STATE_OK, STATE_ERROR, TASK_NEW, TASK_RUNNING, TASK_SPIDER, \
     TASK_SPIDER_UPDATE, TASK_DONE
 from spiderTask.models import Task, Proxy, LastestData, Log, CveItemInfo, CveItemInfoAdd
-
 
 def index(request):  # 测试跑通
     return HttpResponse('hello')
@@ -242,6 +241,8 @@ def saveItemAdd(request):
     return JsonResponse(data, safe=False)
 
 
-def hello(request):
+def getRedisTask(request):
+    cache.set('shukai', 'fanding', timeout=100)
+    name = cache.get('shukai')
+    return HttpResponse(name)
 
-    return HttpResponse("hello")
